@@ -26,7 +26,7 @@ import java.util.*;
  * @author by cyf
  * @date 2020/8/28.
  */
-public class containsDuplicateSolution {
+public class ContainsDuplicateSolution {
 
     public static boolean containsDuplicate(int[] nums) {
         Set<Integer> set = new HashSet();
@@ -34,14 +34,14 @@ public class containsDuplicateSolution {
             if (set.contains(nums[i])){
                 return true;
             }else {
-                return false;
+                set.add(nums[i]);
             }
         }
         return false;
     }
 
     public static void main(String[] args) {
-        int [] nums = {1,2,3,1};
+        int [] nums = {1,2,3};
         System.out.println(containsDuplicate(nums));
     }
 }
