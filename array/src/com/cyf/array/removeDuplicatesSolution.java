@@ -68,7 +68,7 @@ public class removeDuplicatesSolution {
     }
 
     public static void main(String[] args) {
-        int[] nums = {1,1,2};
+        int[] nums = {1,1,2,7,33,44,55,55,66,66,66,87};
         int i = new removeDuplicatesSolution().removeDuplicates(nums);
         System.out.println(i);
     }

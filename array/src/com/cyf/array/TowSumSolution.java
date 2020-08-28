@@ -46,8 +46,8 @@ public class TowSumSolution {
     }
 
     public static void main(String[] args) {
-        int[] nums = {2,7,3,8,90,34,22,1};
-        int target = 91;
+        int[] nums = {3,2,4};
+        int target = 6;
         int[] ints = new TowSumSolution().twoSum(nums, target);
         System.out.println(Arrays.toString(ints));
     }
