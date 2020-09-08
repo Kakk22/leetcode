@@ -29,47 +29,43 @@ package com.cyf.stack;
 //minStack.top();      --> 返回 0.
 //minStack.getMin();   --> 返回 -2.
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 
 /**
  * @author by cyf
  * @date 2020/9/7.
  */
-public class MinStack {
+class MinStack{
+    Stack<Integer> stack;
+    Stack<Integer> minStack;
 
-    private List<Integer> list;
-
-    /**
-     * initialize your data structure here.
-     */
     public MinStack() {
-        list = new ArrayList<>();
+        this.stack = new Stack<>();
+        this.minStack = new Stack<>();
     }
 
     public void push(int x) {
-        list.add(x);
+        stack.push(x);
+        //如果最小栈是空栈或压入值比最小栈顶值要小 则入栈
+        if (minStack.isEmpty() || x < minStack.peek()){
+            minStack.push(x);
+        }
     }
 
     public void pop() {
-        list.remove(list.size() - 1);
+        //如果出栈为最小值  则存储最小值的栈也要出栈
+        if (stack.peek().equals(minStack.peek())){
+            minStack.pop();
+        }
+        stack.pop();
     }
 
     public int top() {
-        return list.get(list.size() - 1);
+        return stack.peek();
     }
 
     public int getMin() {
-        if (list.size()==0){
-            throw new RuntimeException("stack is null");
-        }
-        int min = 0;
-        for (int i = 0; i < list.size(); i++) {
-            if (min > list.get(i)) {
-                min = list.get(i);
-            }
-        }
-        return min;
+        return minStack.peek();
     }
 
     public static void main(String[] args) {
