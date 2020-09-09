@@ -48,7 +48,7 @@ package com.cyf.array;
  * @author by cyf
  * @date 2020/8/19.
  */
-public class removeDuplicatesSolution {
+public class RemoveDuplicatesSolution {
 
     public int removeDuplicates(int[] nums) {
         if (nums.length < 0 || nums == null) {
@@ -69,7 +69,7 @@ public class removeDuplicatesSolution {
 
     public static void main(String[] args) {
         int[] nums = {1,1,2,7,33,44,55,55,66,66,66,87};
-        int i = new removeDuplicatesSolution().removeDuplicates(nums);
+        int i = new RemoveDuplicatesSolution().removeDuplicates(nums);
         System.out.println(i);
     }
 }

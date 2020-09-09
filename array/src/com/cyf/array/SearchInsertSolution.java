@@ -33,7 +33,7 @@ package com.cyf.array;
  * @author by cyf
  * @date 2020/8/23.
  */
-public class searchInsertSolution {
+public class SearchInsertSolution {
 
     public static int searchInsert(int[] nums, int target) {
         //如果比第一位还要小或数组长度为0返回0
