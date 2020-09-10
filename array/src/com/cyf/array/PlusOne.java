@@ -29,16 +29,18 @@ public class PlusOne {
         for (int i = digits.length - 1; i >= 0; i--) {
             digits[i]++;
             digits[i] = digits[i] % 10;
-            if (digits[i] != 0) return digits;
+            if (digits[i] != 0) {
+                return digits;
+            }
         }
+        //如果需要进1位最高位增加1 则 新建一个数组返回
         digits = new int[digits.length + 1];
         digits[0] = 1;
         return digits;
     }
 
-
     public static void main(String[] args) {
-        int [] digits = {4,3,2,1};
+        int[] digits = {9, 8, 9};
         int[] ints = PlusOne.plusOne(digits);
         System.out.println(Arrays.toString(ints));
     }
