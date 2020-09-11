@@ -28,6 +28,7 @@ public class PlusOne {
     public static int[] plusOne(int[] digits) {
         for (int i = digits.length - 1; i >= 0; i--) {
             digits[i]++;
+            //增加1时  对10求余 如果是10 则变为0
             digits[i] = digits[i] % 10;
             if (digits[i] != 0) {
                 return digits;
