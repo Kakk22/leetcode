@@ -31,10 +31,10 @@ package com.cyf.list;
  * @author by cyf
  * @date 2020/11/11.
  */
-public class addTowNumbers {
+public class AddTowNumbers {
 
     public static void main(String[] args) {
-        ListNode first = new ListNode(8, new ListNode(4, new ListNode(8)));
+        ListNode first = new ListNode(2, new ListNode(8, new ListNode(8)));
         ListNode second = new ListNode(5, new ListNode(6, new ListNode(4)));
         ListNode listNode = addTwoNumbers(first, second);
         while (listNode != null) {
@@ -43,6 +43,15 @@ public class addTowNumbers {
         }
     }
 
+    /**
+     * 链表先初始化一个指针指向根节点
+     * 解题思路: 个位数相加 如果链表长度不同
+     * 则短链表高位补0 最高位如果进1 则最后添加1节点
+     *
+     * @param l1 链表1
+     * @param l2 链表2
+     * @return /
+     */
     private static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode pre = new ListNode(0);
         ListNode cur = pre;
@@ -56,32 +65,18 @@ public class addTowNumbers {
             sum = sum % 10;
             cur.next = new ListNode(sum);
             cur = cur.next;
-            if (l1 != null){
+            if (l1 != null) {
                 l1 = l1.next;
             }
-            if (l2 != null){
+            if (l2 != null) {
                 l2 = l2.next;
             }
-            if (carry == 1){
-                cur.next = new ListNode(carry);
-            }
+        }
+        if (carry == 1) {
+            cur.next = new ListNode(carry);
         }
         return pre.next;
     }
-
 }
 
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-}
