@@ -31,7 +31,7 @@ public class RotateRight {
         if (head.next == null) return head;
         ListNode old = head;
         int n;
-        for (n = 0; old.next != null; n++) {
+        for (n = 1; old.next != null; n++) {
             old = old.next;
         }
         //把最后一个节点指向头节点 形成闭环
@@ -49,9 +49,33 @@ public class RotateRight {
         return new_head;
     }
 
+    public static ListNode towPoint(ListNode head, int k) {
+        if (head == null) return null;
+        if (head.next == null) return head;
+        int n;
+        ListNode cur = head;
+        for (n = 0; cur != null; n++) {
+            cur = cur.next;
+        }
+        ListNode fast = head;
+        ListNode low = head;
+        for (int i = 0; fast.next != null; i++) {
+            if (i >= k % n) {
+                low = low.next;
+            }
+            fast = fast.next;
+        }
+
+        fast.next = head;
+        ListNode result = low.next;
+        low.next = null;
+
+        return result;
+    }
+
     public static void main(String[] args) {
         ListNode first = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))));
-        ListNode node = rotateRight(first, 4);
+        ListNode node = towPoint(first, 1);
         while (node != null) {
             System.out.println(node.val);
             node = node.next;
