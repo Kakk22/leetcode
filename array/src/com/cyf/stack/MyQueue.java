@@ -77,7 +77,7 @@ public class MyQueue {
 
         //别的地方看到的更优雅的解法 调用peek()方法后所有元素都到b栈
         peek();
-        return  b.pop();
+        return b.pop();
 
     }
 
@@ -106,6 +106,7 @@ public class MyQueue {
         queue.push(1);
         queue.push(2);
         System.out.println(queue.peek());
+        System.out.println(queue.pop());
         System.out.println(queue.pop());
         System.out.println(queue.empty());
     }
