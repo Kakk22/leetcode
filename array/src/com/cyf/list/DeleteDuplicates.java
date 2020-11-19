@@ -19,30 +19,25 @@ package com.cyf.list;
  */
 public class DeleteDuplicates {
     public static ListNode deleteDuplicates(ListNode head) {
+        if (head == null) return null;
         ListNode pre = new ListNode(0, head);
-        int delVal = head.val;
+        ListNode slow = head;
         while (head != null) {
-            if (head.next == null) {
-                break;
-            }
-            if (delVal == head.next.val) {
-                head.next = head.next.next;
-            }
-            if (head.next != null) {
-                delVal = head.next.val;
-            }
-            if (head.next.next == null && head.next.val == head.val){
-                head.next = null;
-                break;
+            if (slow.val != head.val) {
+                slow.next = head;
+                slow = head;
             }
             head = head.next;
+            if (head == null){
+                slow.next = null;
+            }
         }
         return pre.next;
     }
 
     public static void main(String[] args) {
-//        ListNode first = new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(4,new ListNode(4)))))));
-        ListNode first = new ListNode(1, new ListNode(1, new ListNode(2)));
+         //ListNode first = new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(4, new ListNode(4)))))));
+        ListNode first = new ListNode(1, new ListNode(1,new ListNode(2)));
         ListNode node = deleteDuplicates(first);
         while (node != null) {
             System.out.println(node.val);
