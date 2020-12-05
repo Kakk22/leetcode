@@ -40,6 +40,7 @@ public class LengthOfLongestSubstring {
         int max = 0;
         for (int i = 0; i <s.length() ; i++) {
             if (map.containsKey(s.charAt(i))){
+                //左下标位置,当出现已出现的字符时 判断是否右移
                 left = Math.max(left,map.get(s.charAt(i))+1);
             }
             map.put(s.charAt(i),i);
@@ -51,6 +52,7 @@ public class LengthOfLongestSubstring {
     public static void main(String[] args) {
         //System.out.println(lengthOfLongestSubstring("abcabcbb"));
         //System.out.println(lengthOfLongestSubstring("bbbbb"));
-        System.out.println(lengthOfLongestSubstring("pwwkew"));
+        //System.out.println(lengthOfLongestSubstring("pwwkew"));
+        System.out.println(lengthOfLongestSubstring("abba"));
     }
 }
