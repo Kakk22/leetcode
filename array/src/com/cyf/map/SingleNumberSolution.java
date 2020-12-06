@@ -17,6 +17,8 @@ package com.cyf.map;
 //输出: 4
 
 
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author by cyf
@@ -40,9 +42,22 @@ public class SingleNumberSolution {
         return single;
     }
 
+    public  static int singleNumber_1(int [] nums){
+        Map<Integer,Integer> map = new HashMap<>(16);
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i],map.getOrDefault(nums[i],0)+1);
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (map.get(nums[i]) == 1)
+                return nums[i];
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
-        int [] nums = {4,1,2,1,2};
-        int i = SingleNumberSolution.singleNumber(nums);
+        int [] nums = {4,1,2,1,2,4,5};
+//        int i = SingleNumberSolution.singleNumber(nums);
+        int i = SingleNumberSolution.singleNumber_1(nums);
         System.out.println(i);
     }
 }
