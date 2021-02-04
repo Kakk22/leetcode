@@ -29,11 +29,8 @@ public class TowSumSolution {
      * 用hashmap的key存储数据的值，value存数组下标
      * 每次都判断值是否有target-nums[i] 有则说明当前i为要找的下标
      *
-     * @param nums
-     * @param target
-     * @return
      */
-    public int[] twoSum(int[] nums, int target) {
+    private int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>(16);
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(target -nums[i])){
