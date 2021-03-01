@@ -1,6 +1,7 @@
 package com.cyf.interview;
 
 import java.util.Arrays;
+import java.util.OptionalInt;
 import java.util.Random;
 
 /**
@@ -20,9 +21,52 @@ public class FairJudge {
 
     public static void main(String[] args) {
         int[][] grade = getGrade();
+
         int[] avgGrade = doComputeAvg(grade);
         System.out.println(Arrays.toString(avgGrade));
+
+        int id = doGetFairJudge(grade, avgGrade);
+
+        System.out.println("偏差最小的是"+id+"号裁判");
     }
+
+    /**
+     * 获取最公平的裁判(离平均分最小)
+     *
+     * @param grade    原始数据
+     * @param avgGrade 平均分数
+     * @return /
+     */
+    private static int doGetFairJudge(int[][] grade, int[] avgGrade) {
+        //存放所有裁判对照片平均值的差距结果
+        int[] resultDiff = new int[grade[0].length];
+
+        for (int i = 0; i < grade[0].length; i++) {
+            int result = 0;
+            for (int j = 0; j < grade.length; j++) {
+                int diff = avgGrade[j] - grade[j][i];
+                diff = diff >= 0 ? diff : -diff;
+                result += diff;
+            }
+            System.out.println("第" + i + "个裁判100张照片的与平均值的偏差为:" + result);
+            resultDiff[i] = result / avgGrade.length;
+        }
+        System.out.println(Arrays.toString(resultDiff));
+        return getMinIndex(resultDiff);
+    }
+
+
+    //获取最大值的下标
+    private static int getMinIndex(int[] arr) {
+        int minIndex = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < arr[minIndex]) {
+                minIndex = i;
+            }
+        }
+        return minIndex;
+    }
+
 
     /**
      * 计算平均得分
@@ -38,12 +82,8 @@ public class FairJudge {
             int min = 0;
             //获取最大最小值
             for (int j = 0; j < grade[i].length; j++) {
-                if (grade[i][j] > max) {
-                    max = grade[i][j];
-                }
-                if (grade[i][j] < min) {
-                    min = grade[i][j];
-                }
+                max = Math.max(grade[i][j], max);
+                min = Math.min(grade[i][j], min);
             }
 
             int sum = 0;
