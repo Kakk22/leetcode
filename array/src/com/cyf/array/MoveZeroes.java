@@ -30,8 +30,8 @@ public class MoveZeroes {
      * @param arr
      * @return
      */
-    public static int[] moveZeroes(int arr []){
-        if (arr.length < 0){
+    public static int[] moveZeroes(int[] arr){
+        if (arr.length == 0){
             throw  new RuntimeException("数组长度必须大于0");
         }
         int zero = 0;

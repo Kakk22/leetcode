@@ -20,8 +20,23 @@ public class FairJudge {
 
     public static void main(String[] args) {
         int[][] grade = getGrade();
+
         int[] avgGrade = doComputeAvg(grade);
         System.out.println(Arrays.toString(avgGrade));
+
+        int id = doGetFairJudge(grade, avgGrade);
+    }
+
+    /**
+     * 获取评分最公平的裁判id
+     *
+     * @param grade    原始数据
+     * @param avgGrade 最终得分
+     * @return /
+     */
+    private static int doGetFairJudge(int[][] grade, int[] avgGrade) {
+
+        return -1;
     }
 
     /**
